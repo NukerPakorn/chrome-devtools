@@ -1,0 +1,10 @@
+.thumbnail {
+  object-fit: contain;
+  border-radius: 4px;
+}
+.thumbnail.thumbnail-100 {
+  max-width: 100px;
+}
+.thumbnail.thumbnail-150 {
+  max-width: 150px;
+}

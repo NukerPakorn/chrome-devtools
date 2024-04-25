@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Override XHR - How to use Chrome DevTools like a pro?</title>
+  <link rel="stylesheet" href="/css/reboot.css">
+  <link rel="stylesheet" href="/css/utilities.css">
+  <link rel="stylesheet" href="/css/container.css">
+  <link rel="stylesheet" href="/css/button.css">
+  <link rel="stylesheet" href="/css/input.css">
+  <link rel="stylesheet" href="/css/nav.css">
+  <link rel="stylesheet" href="/css/image.css">
+  <style>
+    .nav-link:hover {
+      border-color: #616161;
+      color: #000;
+    }
+    .thumbnail {
+      border: 1px solid #616161;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Override XHR</h1>
+    <ul id="list" class="nav"></ul>
+  </div>
+  <script src="/js/helpers.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      getFilms()
+    })
+    async function getFilms () {
+      const response = await fetch('https://dev.to/api/articles')
+      const data = await response.json()
+      renderItems(data)
+    }
+    function renderItems (items) {
+      items.forEach(function (item) {
+        const { title, social_image, url, published_at } = item
+        addItem({
+          title,
+          image: social_image,
+          url,
+          date: published_at
+        })
+      })
+    }
+    function addItem (data) {
+      const listEl = document.getElementById('list')
+      listEl.appendChild(createItem(data))
+    }
+    function createItem (data) {
+      const { title, image, url, date } = data
+      const img = createNewElement({
+        tagName: 'img',
+        attr: {
+          src: image,
+          class: 'thumbnail thumbnail-150',
+          loading: 'lazy'
+        }
+      })
+      const textContentEl = createNewElement({
+        tagName: 'span',
+        attr: {
+          class: 'ms-2'
+        }
+      })
+      const titleEl = createNewElement({
+        tagName: 'span',
+        attr: {
+          class: 'd-block mt-1'
+        },
+        props: {
+          innerText: title
+        }
+      })
+      const dateEl = createNewElement({
+        tagName: 'span',
+        attr: {
+          class: 'text-muted',
+          style: 'font-size: 14px;'
+        },
+        props: {
+          innerText: new Date(date).toDateString()
+        }
+      })
+      const navLink = createNewElement({
+        tagName: 'a',
+        attr: {
+          class: 'nav-link d-flex',
+          href: url,
+          target: '_blank'
+        }
+      })
+      const listItemEl = createNewElement({
+        tagName: 'li',
+        attr: {
+          class: 'nav-item mb-1rem'
+        }
+      })
+
+      textContentEl.appendChild(dateEl)
+      textContentEl.appendChild(titleEl)
+      navLink.appendChild(img)
+      navLink.appendChild(textContentEl)
+      listItemEl.appendChild(navLink)
+      return listItemEl
+    }
+  </script>
+</body>
+</html>

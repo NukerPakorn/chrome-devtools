@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to use Chrome DevTools like a pro?</title>
+  <link rel="stylesheet" href="/css/reboot.css">
+  <link rel="stylesheet" href="/css/utilities.css">
+  <link rel="stylesheet" href="/css/container.css">
+  <link rel="stylesheet" href="/css/nav.css">
+</head>
+<body class="d-flex align-items-center justify-content-center">
+  <div class="container w-100">
+    <h1>How to use Chrome DevTools like a pro?</h1>
+    <ul class="nav">
+      <li class="nav-item mb-1rem">
+        <a href="/attributes-filter.html" target="_blank" class="nav-link hover-shadow">Attributes Filter</a>
+      </li>
+      <li class="nav-item mb-1rem">
+        <a href="/override-xhr.html" target="_blank" class="nav-link hover-shadow">Override XHR</a>
+      </li>
+      <li class="nav-item">
+        <a href="/console.html" target="_blank" class="nav-link hover-shadow">Console</a>
+      </li>
+    </ul>
+    <ul style="padding-left: 1rem;">
+      <li>
+        <a target="_blank" href="https://developer.chrome.com/docs/devtools/overrides">https://developer.chrome.com/docs/devtools/overrides</a>
+      </li>
+      <li>
+        <a target="_blank" href="https://developer.chrome.com/docs/devtools/console">https://developer.chrome.com/docs/devtools/console</a>
+      </li>
+      <li>
+        <a target="_blank" href="https://developer.chrome.com/docs/devtools/console/format-style">https://developer.chrome.com/docs/devtools/console/format-style</a>
+      </li>
+    </ul>
+  </div>
+  <script>
+    const navItemEls = [].slice.call(document.querySelectorAll('.nav-item'))
+    navItemEls.forEach((element) => {
+      element.addEventListener('click', handleClick)
+    })
+    function handleClick (e) {
+      const navItemEls = [].slice.call(document.querySelectorAll('.nav-item'))
+      navItemEls.forEach((element) => {
+        element.classList.remove('active')
+      })
+      e.currentTarget.classList.add('active')
+    }
+  </script>
+</body>
+</html>

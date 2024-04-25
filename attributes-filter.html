@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attributes Filter - How to use Chrome DevTools like a pro?</title>
+  <link rel="stylesheet" href="/css/reboot.css">
+  <link rel="stylesheet" href="/css/utilities.css">
+  <link rel="stylesheet" href="/css/container.css">
+  <link rel="stylesheet" href="/css/button.css">
+  <link rel="stylesheet" href="/css/input.css">
+  <link rel="stylesheet" href="/css/list.css">
+  <style>
+    .input-focus {
+      background-color: #cae5ff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Attributes Filter</h1>
+    <input id="inputText" type="text" autofocus>
+    <button id="btnAddNewItem" type="button" class="button">New item</button>
+    <div id="msgEmpty" class="text-center p-2rem">Empty</div>
+    <ul id="list" class="list"></ul>
+  </div>
+  <script src="/js/helpers.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      registerEvent()
+    })
+    function registerEvent () {
+      const inputText = document.getElementById('inputText')
+      const btnAddNewItem = document.getElementById('btnAddNewItem')
+      inputText.addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+          newItem()
+        }
+      })
+      btnAddNewItem.addEventListener('click', function () {
+        newItem()
+      })
+    }
+    function getInputValue (id) {
+      const input = document.getElementById(id)
+      if (!input) { return false }
+      return input.value
+    }
+    function resetInput (id) {
+      const input = document.getElementById(id)
+      if (!input) { return false }
+      input.value = ''
+      input.focus()
+    }
+    function newItem () {
+      const data = getInputValue('inputText')
+      if (!data) {
+        resetInput('inputText')
+        return false
+      }
+      addItem(data)
+      resetInput('inputText')
+      updateEmptyMessage()
+    }
+    function addItem (data) {
+      const listEl = document.getElementById('list')
+      listEl.appendChild(createItem(data))
+    }
+    function createItem (data) {
+      const listItemEl = createNewElement({
+        tagName: 'li',
+        attr: {
+          class: 'todo-item list-item d-flex align-items-center'
+        },
+        props: {
+          innerHTML: data
+        }
+      })
+      const btnRemove = createNewElement({
+        tagName: 'button',
+        attr: {
+          type: 'button',
+          class: 'button button-sm ms-auto'
+        },
+        props: {
+          innerText: 'Remove'
+        },
+        on: {
+          click: removeItem
+        }
+      })
+      listItemEl.appendChild(btnRemove)
+      return listItemEl
+    }
+    function removeItem (event) {
+      const parentNode = event.target.parentNode
+      if (!parentNode) { return }
+      parentNode.remove()
+      updateEmptyMessage()
+    }
+    function updateEmptyMessage () {
+      const items = [].slice.call(document.querySelectorAll('.todo-item'))
+      if (!items.length) {
+        document.getElementById('msgEmpty').style.display = null
+        resetInput('inputText')
+        return
+      }
+      document.getElementById('msgEmpty').style.display = 'none'
+    }
+  </script>
+</body>
+</html>

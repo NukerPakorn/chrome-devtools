@@ -1,0 +1,16 @@
+.button {
+  background-color: var(--default-bg-color);
+  border: 1px solid var(--default-border-color);
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  font-size: 18px;
+  transition: box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+.button.button-sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 16px;
+}
+.button:hover {
+  background-color: var(--default-hover-bg-color);
+}

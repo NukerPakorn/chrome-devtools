@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Console - How to use Chrome DevTools like a pro?</title>
+  <link rel="stylesheet" href="/css/reboot.css">
+  <link rel="stylesheet" href="/css/utilities.css">
+  <link rel="stylesheet" href="/css/container.css">
+  <link rel="stylesheet" href="/css/button.css">
+  <link rel="stylesheet" href="/css/input.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Console</h1>
+
+    <h2>console.time</h2>
+    <div class="mb-2rem">
+      <button type="button" class="button" onclick="loop()">Start loop</button>
+      <button type="button" class="button" onclick="loopCacheLength()">Start loop cache length</button>
+    </div>
+
+    <h2>console.table</h2>
+    <div class="mb-2rem">
+      <button type="button" class="button" onclick="logTable()">console.table</button>
+    </div>
+
+    <h2>Console message style with format specifier</h2>
+    <div class="mb-2rem">
+      <button type="button" class="button" onclick="consoleOops()">Oops!</button>
+    </div>
+  </div>
+  <script src="./js/data.js"></script>
+  <script>
+    function consoleOops () {
+      const style = 'background-color: darkblue; color: white; font-style: italic; border: 5px solid hotpink; font-size: 2em;'
+      console.log("%cOops!", style)
+    }
+    function logTable () {
+      const _securitySymbols = securitySymbols
+      console.table(_securitySymbols)
+    }
+    function loop () { // A
+      const _securitySymbols = securitySymbols
+      let totleItem = 1
+      console.time('loop finished')
+      for(let i = 0;i < _securitySymbols.length; i++) {
+        totleItem += 1
+      }
+      console.timeEnd('loop finished')
+      console.log({
+        totleItem
+      })
+    }
+    function loopCacheLength () { // B
+      const _securitySymbols = securitySymbols
+      const length = _securitySymbols.length
+      let totleItem = 1
+      console.time('loop cache length finished')
+      for(let i = 0;i < length; i++) {
+        totleItem += 1
+      }
+      console.timeEnd('loop cache length finished')
+      console.log({
+        totleItem
+      })
+    }
+  </script>
+</body>
+</html>
