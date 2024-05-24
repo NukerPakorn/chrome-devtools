@@ -1,0 +1,13 @@
+.search-box {
+  border: 1px solid var(--default-border-color);
+  border-radius: 50px;
+  min-width: 250px;
+}
+.search-box .input-search {
+  background-color: transparent;
+  border: none;
+  height: 100%;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  outline: none;
+}

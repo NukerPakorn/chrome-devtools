@@ -1,3 +1,6 @@
+.border-bottom {
+  border-bottom: 1px solid var(--default-border-color);
+}
 .d-flex {
   display: flex !important;
 }
