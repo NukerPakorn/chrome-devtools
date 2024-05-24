@@ -9,28 +9,48 @@
   <link rel="stylesheet" href="/css/container.css">
   <link rel="stylesheet" href="/css/nav.css">
   <link rel="stylesheet" href="/css/search.css">
+  <style>
+    .search-box-panel.active {
+      position: fixed;
+      inset: 0 0 0 0;
+      background-color: rgba(255,255,255,0.5);
+    }
+    .search-box-panel.active .btn-close-search {
+      display: block;
+    }
+    .btn-close-search {
+      display: none;
+    }
+  </style>
 </head>
 <body>
   <header class="border-bottom">
-    <div class="container d-flex justify-content-center p-1rem">
-      <div class="search-box">
-        <input type="text" class="input-search" placeholder="Search...">
+    <div id="searchBoxPanel" class="search-box-panel d-flex align-items-center justify-content-center">
+      <div class="container p-1rem">
+        <div class="search-box mb-1rem">
+          <input type="text" class="input-search" placeholder="Search..." onfocus="handleFocusSearch()">
+        </div>
+        <button type="button" class="btn-close-search" onclick="closeSearch()">Close Search</button>
       </div>
     </div>
   </header>
   <main class="container w-100">
     <h1>Search...</h1>
     <div class="search-box">
-      <input class="input-search" placeholder="Search...">
+      <input type="text" class="input-search" placeholder="Search...">
     </div>
   </main>
-  <!-- <script>
-    function domReady () {
-
+  <script>
+    function handleFocusSearch () {
+      var searchBoxPanel = document.getElementById('searchBoxPanel');
+      searchBoxPanel.classList.add('active');
+      document.body.style.overflow = 'hidden';
     }
-    function registerEvent () {
-
+    function closeSearch () {
+      var searchBoxPanel = document.getElementById('searchBoxPanel');
+      searchBoxPanel.classList.remove('active');
+      document.body.style.overflow = null;
     }
-  </script> -->
+  </script>
 </body>
 </html>
