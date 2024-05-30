@@ -14,10 +14,11 @@
             const inputText = document.getElementById('inputText');
             // Add a small delay to simulate user interaction
             setTimeout(() => {
-                // Re-focus the input field
-                inputText.blur(); // First blur the input
-                inputText.focus(); // Then focus again
-            }, 1000);
+                inputText.blur(); // Blur the input
+                setTimeout(() => {
+                    inputText.focus(); // Re-focus the input to show the keyboard
+                }, 100); // Short delay before re-focusing
+            }, 100); // Initial delay before blurring
         });
     </script>
 </body>
