@@ -50,7 +50,9 @@
       const input = document.getElementById(id)
       if (!input) { return false }
       input.value = ''
-      input.focus()
+      setTimeout(() => {
+        input.focus()
+      }, 1000)
     }
     function newItem () {
       const data = getInputValue('inputText')
