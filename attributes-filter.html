@@ -40,6 +40,11 @@
       btnAddNewItem.addEventListener('click', function () {
         newItem()
       })
+      inputText.addEventListener('touchstart', function() {
+          setTimeout(() => {
+            inputText.focus();
+          }, 1000);
+      });
     }
     function getInputValue (id) {
       const input = document.getElementById(id)
@@ -50,11 +55,13 @@
       const input = document.getElementById(id)
       if (!input) { return false }
       input.value = ''
-      setTimeout(() => {
-        input.setAttribute('autofocus', 'autofocus');
-        input.focus()
-        input.click()
-      }, 1000)
+      // setTimeout(() => {
+      //   input.setAttribute('autofocus', 'autofocus');
+      //   input.focus()
+      //   input.click()
+      // }, 1000)
+      const touchEvent = new Event('touchstart');
+      input.dispatchEvent(touchEvent);
     }
     function newItem () {
       const data = getInputValue('inputText')
