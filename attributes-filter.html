@@ -40,10 +40,10 @@
       btnAddNewItem.addEventListener('click', function () {
         newItem()
       })
-      inputText.addEventListener('touchstart', function() {
+      inputText.addEventListener('click', function() {
         setTimeout(() => {
           inputText.focus();
-          alert('working');
+          alert('click working');
         }, 1000);
       });
     }
@@ -61,7 +61,7 @@
       //   input.focus()
       //   input.click()
       // }, 1000)
-      const touchEvent = new Event('touchstart');
+      const touchEvent = new Event('click');
       input.dispatchEvent(touchEvent);
     }
     function newItem () {
