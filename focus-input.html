@@ -20,9 +20,14 @@
         //     }, 1000)
         // });
         document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(function() {
+            const interval = setInterval(function() {
                 focuInput();
-            }, 1000); // Adjust the delay as needed
+                clearInterval(interval);
+                console.log('working')
+            }, 1000);
+            // setTimeout(function() {
+            //     focuInput();
+            // }, 1000); // Adjust the delay as needed
         });
         function focuInput () {
             const inputField = document.getElementById('inputText');
