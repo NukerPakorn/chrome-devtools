@@ -11,14 +11,16 @@
 
     <script>
         document.getElementById('btnAddNewItem').addEventListener('click', function() {
-            const inputText = document.getElementById('inputText');
-            
-            // Directly focus the input within the event handler
-            inputText.focus();
+            setTimeout(() => {
+                const inputText = document.getElementById('inputText');
+                
+                // Directly focus the input within the event handler
+                inputText.focus();
 
-            // Workaround: create a touch event to trigger the keyboard
-            const touchEvent = new Event('touchstart');
-            inputText.dispatchEvent(touchEvent);
+                // Workaround: create a touch event to trigger the keyboard
+                const touchEvent = new Event('touchstart', { bubbles: true, cancelable: true });
+                inputText.dispatchEvent(touchEvent);
+            }, 1000); // Adjust the delay as needed
         });
     </script>
 </body>
