@@ -12,14 +12,13 @@
     <script>
         document.getElementById('btnAddNewItem').addEventListener('click', function() {
             const inputText = document.getElementById('inputText');
-            // Add a small delay to simulate user interaction
-            setTimeout(() => {
-                inputText.blur(); // Blur the input
-                setTimeout(() => {
-                    inputText.focus(); // Re-focus the input to show the keyboard
-                }, 100); // Short delay before re-focusing
-            }, 100); // Initial delay before blurring
+            inputText.focus();
         });
+        document.addEventListener('DOMContentLoaded', function () {
+            setTimeout(function () {
+                document.getElementById('btnAddNewItem').click();
+            }, 1000)
+        })
     </script>
 </body>
 </html>
