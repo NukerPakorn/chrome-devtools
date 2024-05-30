@@ -6,12 +6,17 @@
     <title>Focus Input Example</title>
 </head>
 <body>
-    <input id="inputText" type="text" placeholder="Tap the button to focus">
+    <input id="inputText" type="text" value="Tap the button to focus" placeholder="Tap the button to focus">
     <button id="btnAddNewItem" type="button" class="button">Click to focus input</button>
 
     <script>
-        document.getElementById('btnAddNewItem').addEventListener('click', function() {
-            focuInput();
+        // document.getElementById('btnAddNewItem').addEventListener('click', function() {
+        //     focuInput();
+        // });
+        document.getElementById('btnAddNewItem').addEventListener('touchend', function() {
+            setTimeout(() => {
+                focuInput();
+            }, 1000);
         });
         // document.addEventListener('DOMContentLoaded', function() {
         //     setTimeout(() => {
@@ -31,6 +36,7 @@
         });
         function focuInput () {
             const inputField = document.getElementById('inputText');
+            inputField.blur();
             inputField.focus();
         }
     </script>
