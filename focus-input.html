@@ -11,14 +11,13 @@
 
     <script>
         document.getElementById('btnAddNewItem').addEventListener('click', function() {
-            const inputText = document.getElementById('inputText');
-            inputText.focus();
+            // Add a small delay to simulate user interaction
+            setTimeout(() => {
+                const inputText = document.getElementById('inputText');
+                inputText.focus(); // Re-focus the input to show the keyboard
+                inputText.setSelectionRange(inputText.value.length, inputText.value.length);
+            }, 1000); // Short delay before re-focusing
         });
-        document.addEventListener('DOMContentLoaded', function () {
-            setTimeout(function () {
-                document.getElementById('btnAddNewItem').click();
-            }, 1000)
-        })
     </script>
 </body>
 </html>
