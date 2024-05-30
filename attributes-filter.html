@@ -40,13 +40,6 @@
       btnAddNewItem.addEventListener('click', function () {
         newItem()
       })
-      inputText.addEventListener('click', function() {
-        setTimeout(() => {
-          // inputText.setAttribute('autofocus', 'autofocus');
-          inputText.blur();
-          inputText.focus();
-        }, 50);
-      });
     }
     function getInputValue (id) {
       const input = document.getElementById(id)
@@ -57,13 +50,10 @@
       const input = document.getElementById(id)
       if (!input) { return false }
       input.value = ''
-      // setTimeout(() => {
-      //   input.setAttribute('autofocus', 'autofocus');
-      //   input.focus()
-      //   input.click()
-      // }, 1000)
-      const touchEvent = new Event('click');
-      input.dispatchEvent(touchEvent);
+      setTimeout(() => {
+        const inputText1 = document.getElementById('inputText')
+        inputText1.focus();
+      }, 1000)
     }
     function newItem () {
       const data = getInputValue('inputText')
