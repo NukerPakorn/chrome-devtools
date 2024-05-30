@@ -10,15 +10,23 @@
     <button id="btnAddNewItem" type="button" class="button">Click to focus input</button>
 
     <script>
-        document.getElementById('btnAddNewItem').addEventListener('click', function() {
-            const inputText = document.getElementById('inputText');
-            inputText.focus();
-        });
+        // document.getElementById('btnAddNewItem').addEventListener('click', function() {
+        //     const inputText = document.getElementById('inputText');
+        //     inputText.focus();
+        // });
+        // document.addEventListener('DOMContentLoaded', function() {
+        //     setTimeout(() => {
+        //         const eventClick = new Event('click');
+        //         document.getElementById('btnAddNewItem').dispatchEvent(eventClick);
+        //     }, 1000)
+        // });
         document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(() => {
-                const eventClick = new Event('click');
-                document.getElementById('btnAddNewItem').dispatchEvent(eventClick);
-            }, 1000)
+            const inputField = document.getElementById('inputText');
+
+            setTimeout(function() {
+                inputField.focus();
+                inputField.select();
+            }, 500); // Adjust the delay as needed
         });
     </script>
 </body>
