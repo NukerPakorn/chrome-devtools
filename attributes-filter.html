@@ -51,6 +51,7 @@
       if (!input) { return false }
       input.value = ''
       setTimeout(() => {
+        input.setAttribute('autofocus', 'autofocus');
         input.focus()
       }, 1000)
     }
