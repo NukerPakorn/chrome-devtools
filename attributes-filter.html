@@ -41,9 +41,10 @@
         newItem()
       })
       inputText.addEventListener('touchstart', function() {
-          setTimeout(() => {
-            inputText.focus();
-          }, 1000);
+        setTimeout(() => {
+          inputText.focus();
+          alert('working');
+        }, 1000);
       });
     }
     function getInputValue (id) {
