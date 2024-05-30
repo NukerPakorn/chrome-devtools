@@ -42,8 +42,8 @@
       })
       inputText.addEventListener('click', function() {
         setTimeout(() => {
+          input.setAttribute('autofocus', 'autofocus');
           inputText.focus();
-          alert('click working');
         }, 1000);
       });
     }
