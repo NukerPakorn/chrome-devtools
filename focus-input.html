@@ -14,10 +14,19 @@
             // Add a small delay to simulate user interaction
             setTimeout(() => {
                 const inputText = document.getElementById('inputText');
+                inputText.setAttribute('value', '1');
                 inputText.focus(); // Re-focus the input to show the keyboard
                 inputText.setSelectionRange(inputText.value.length, inputText.value.length);
             }, 1000); // Short delay before re-focusing
         });
+        // const inputField = document.getElementById('inputText');
+        // inputField.addEventListener('input', function() {
+        //     console.log('input working')
+        //     // Delay focus to manage input delay
+        //     // setTimeout(function() {
+        //     //     inputField.focus();
+        //     // }, 200); // Adjust the delay time as needed
+        // });
     </script>
 </body>
 </html>
